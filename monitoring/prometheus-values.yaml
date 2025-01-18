@@ -1,0 +1,36 @@
+alertmanager:
+  enabled: true
+
+pushgateway:
+  enabled: true
+
+server:
+  persistentVolume:
+    enabled: true
+    size: 8Gi
+
+serverFiles:
+  alerting_rules.yml:
+    groups:
+      - name: example
+        rules:
+          - alert: HighRequestLatency
+            expr: http_request_duration_seconds{quantile="0.5"} > 1
+            for: 10m
+            labels:
+              severity: warning
+            annotations:
+              summary: "High request latency on {{ $labels.instance }}"
+              description: "{{ $labels.instance }} has a median request latency above 1s (current value: {{ $value }}s)"
+
+grafana:
+  enabled: true
+  adminPassword: changeme
+
+  dashboards:
+    default:
+      kubernetes-cluster:
+        gnetId: 6417
+        revision: 1
+        datasource: Prometheus
+
