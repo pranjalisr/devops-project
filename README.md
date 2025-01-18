@@ -15,7 +15,6 @@ This project includes:
 
 ## Architecture
 
-[TODO: Add a diagram of the architecture]
 
 The application is containerized and deployed to a Kubernetes cluster on AWS EKS. The CI/CD pipeline automates building, testing, and deployment processes.
 
@@ -47,6 +46,7 @@ Kubernetes Configuration: Ensure that your Kubernetes configuration file (kube_c
 AWS Credentials: Configure your AWS credentials using the AWS CLI or appropriate environment variables. For example:
 
 export AWS_ACCESS_KEY_ID=your_access_key
+
 export AWS_SECRET_ACCESS_KEY=your_secret_key
 
 It's a good practice to use role-based access control (RBAC) in Kubernetes to manage permissions effectively.
